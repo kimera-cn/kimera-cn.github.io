@@ -209,119 +209,33 @@ if (true) {
 <p>从其实位置到种植位置的内容，但它去除html标签，同时空格和换行也会去掉</p>
 <p><code>element.innerHTML</code></p>
 <p>起始位置到终止位置的全部内容，包括html标签，同时保留空格和换行</p>
-<pre><code> &lt;body&gt;
-    &lt;button&gt;显示当前系统时间&lt;/button&gt;
-    &lt;div&gt;某个时间&lt;/div&gt;
-    &lt;p&gt;1123&lt;/p&gt;
-    &lt;a&gt;&lt;/a&gt;
-    &lt;script&gt;
-        // 当我们点击了按钮，  div里面的文字会发生变化
-        // 1. 获取元素 
-        let btn = document.querySelector(&#39;button&#39;);
-        let div = document.querySelector(&#39;div&#39;);
-        // 2.注册事件
-        btn.onclick = function() &#123;
-            // div.innerText = &#39;2024-10-11&#39;;
-            div.innerHTML = getDate();
-        &#125;
-        function getDate() &#123;
-            let date = new Date();
-            // 我们写一个 2024年 10月 11日 星期三
-            let year = date.getFullYear();
-            let month = date.getMonth() + 1;
-            let dates = date.getDate();
-            let arr = [&#39;星期日&#39;, &#39;星期一&#39;, &#39;星期二&#39;, &#39;星期三&#39;, &#39;星期四&#39;, &#39;星期五&#39;, &#39;星期六&#39;];
-            let day = date.getDay();
-            return &#39;今天是：&#39; + year + &#39;年&#39; + month + &#39;月&#39; + dates + &#39;日 &#39; + arr[day];
-        &#125;
-        // 我们元素可以不用添加事件
-        let p = document.querySelector(&#39;p&#39;);
-        p.innerText = getDate();//页面加载就直接显示
-        let a = document.querySelector(&#39;a&#39;);
-        a.innerText = &#39;&lt;strong&gt;aaa&lt;/strong&gt;bbb&#39;;//&lt;strong&gt;aaa&lt;/strong&gt;bbb
-        a.innerHTML = &#39;&lt;strong&gt;aaa&lt;/strong&gt;bbb&#39;;//aaabbb(aaa加粗)
-    &lt;/script&gt;
-&lt;/body&gt;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> &lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">button</span>&gt;</span>显示当前系统时间<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>某个时间<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1123<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 当我们点击了按钮，  div里面的文字会发生变化</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 1. 获取元素 </span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> div = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;div&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 2.注册事件</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        btn.<span class="property">onclick</span> = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="comment">// div.innerText = &#x27;2024-10-11&#x27;;</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            div.<span class="property">innerHTML</span> = <span class="title function_">getDate</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">function</span> <span class="title function_">getDate</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="comment">// 我们写一个 2024年 10月 11日 星期三</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">let</span> year = date.<span class="title function_">getFullYear</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">let</span> month = date.<span class="title function_">getMonth</span>() + <span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">let</span> dates = date.<span class="title function_">getDate</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">let</span> arr = [<span class="string">&#x27;星期日&#x27;</span>, <span class="string">&#x27;星期一&#x27;</span>, <span class="string">&#x27;星期二&#x27;</span>, <span class="string">&#x27;星期三&#x27;</span>, <span class="string">&#x27;星期四&#x27;</span>, <span class="string">&#x27;星期五&#x27;</span>, <span class="string">&#x27;星期六&#x27;</span>];</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">let</span> day = date.<span class="title function_">getDay</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">return</span> <span class="string">&#x27;今天是：&#x27;</span> + year + <span class="string">&#x27;年&#x27;</span> + month + <span class="string">&#x27;月&#x27;</span> + dates + <span class="string">&#x27;日 &#x27;</span> + arr[day];</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 我们元素可以不用添加事件</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> p = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;p&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        p.<span class="property">innerText</span> = <span class="title function_">getDate</span>();<span class="comment">//页面加载就直接显示</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> a = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;a&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        a.<span class="property">innerText</span> = <span class="string">&#x27;&lt;strong&gt;aaa&lt;/strong&gt;bbb&#x27;</span>;<span class="comment">//&lt;strong&gt;aaa&lt;/strong&gt;bbb</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        a.<span class="property">innerHTML</span> = <span class="string">&#x27;&lt;strong&gt;aaa&lt;/strong&gt;bbb&#x27;</span>;<span class="comment">//aaabbb(aaa加粗)</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 <p><code>innerText</code>和<code>innerHTML</code>是可读写的 可以获得里面的元素</p>
-<pre><code>&lt;body&gt;
-    &lt;div&gt;&lt;/div&gt;
-    &lt;p&gt;
-        我是文字
-        &lt;span&gt;123&lt;/span&gt;
-    &lt;/p&gt;
-    &lt;script&gt;
-        let p = document.querySelector(&#39;p&#39;);
-        console.log(p.innerText);//我是文字 123
-        console.log(p.innerHTML);//我是文字
-                   &lt;span&gt;123&lt;/span&gt;
-    &lt;/script&gt;
-&lt;/body&gt;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        我是文字</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>123<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> p = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;p&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">innerText</span>);<span class="comment">//我是文字 123</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">console</span>.<span class="title function_">log</span>(p.<span class="property">innerHTML</span>);<span class="comment">//我是文字</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">                   <span class="language-xml"><span class="tag">&lt;<span class="name">span</span>&gt;</span>123<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="2-常用元素的属性操作"><a href="#2-常用元素的属性操作" class="headerlink" title="2.常用元素的属性操作"></a>2.常用元素的属性操作</h2><p><code>src、href、id、alt、title</code></p>
-<pre><code>&lt;body&gt;
-    &lt;button id=&quot;ldh&quot;&gt;刘德华&lt;/button&gt;
-    &lt;button id=&quot;zxy&quot;&gt;张学友&lt;/button&gt;
-    &lt;img src=&quot;images/ldh.jpg&quot; alt=&quot;刘德华&quot; title=&quot;刘德华&quot;&gt;
-
-    &lt;script&gt;
-        // 修改元素属性 src
-        // 1.获取元素
-        let ldh = document.querySelector(&#39;#ldh&#39;);
-        let zxy = document.querySelector(&#39;#zxy&#39;);
-        let img = document.querySelector(&#39;img&#39;);
-
-        // 2.注册事件
-        zxy.onclick = function () &#123;
-            img.src = &#39;images/zxy.jpg&#39;;
-            img.title = &#39;张学友&#39;;
-        &#125;
-        ldh.onclick = function () &#123;
-            img.src = &#39;images/ldh.jpg&#39;;
-            img.title = &#39;刘德华&#39;;
-        &#125;
-    &lt;/script&gt;
-&lt;/body&gt;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;ldh&quot;</span>&gt;</span>刘德华<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">&quot;zxy&quot;</span>&gt;</span>张学友<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/ldh.jpg&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;刘德华&quot;</span> <span class="attr">title</span>=<span class="string">&quot;刘德华&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 修改元素属性 src</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 1.获取元素</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> ldh = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#ldh&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> zxy = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#zxy&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> img = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;img&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 2.注册事件</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        zxy.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            img.<span class="property">src</span> = <span class="string">&#x27;images/zxy.jpg&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            img.<span class="property">title</span> = <span class="string">&#x27;张学友&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ldh.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            img.<span class="property">src</span> = <span class="string">&#x27;images/ldh.jpg&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            img.<span class="property">title</span> = <span class="string">&#x27;刘德华&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <h2 id="3-表单元素的属性操作"><a href="#3-表单元素的属性操作" class="headerlink" title="3.表单元素的属性操作"></a>3.表单元素的属性操作</h2><p>利用DOM可以操作如下表单元素的属性</p>
 <p><code>type,value,checked,selected,disabled</code></p>
-<pre><code>&lt;body&gt;
-
-    &lt;button&gt;按钮&lt;/button&gt;
-    &lt;input type=&quot;text&quot; value=&quot;输入内容&quot;&gt;
-
-    &lt;script&gt;
-        let btn = document.querySelector(&#39;button&#39;);
-        let input = document.querySelector(&#39;input&#39;);
-
-        btn.onclick = function () &#123;
-            input.value = &#39;点击了按钮&#39;;
-            this.disabled = true;
-        &#125;
-    &lt;/script&gt;
-&lt;/body&gt;
-</code></pre>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">button</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">value</span>=<span class="string">&quot;输入内容&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> btn = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> input = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        btn.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            input.<span class="property">value</span> = <span class="string">&#x27;点击了按钮&#x27;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">this</span>.<span class="property">disabled</span> = <span class="literal">true</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
 <h2 id="4-样式属性操作"><a href="#4-样式属性操作" class="headerlink" title="4.样式属性操作"></a>4.样式属性操作</h2><h3 id="4-1修改样式属性"><a href="#4-1修改样式属性" class="headerlink" title="4.1修改样式属性"></a>4.1修改样式属性</h3><p><code>element. style</code> 行内样式操作</p>
-<pre><code>        &lt;style&gt;
-                div &#123;
-                    width: 200px;
-                    height: 200px;
-                    background-color: pink;
-                &#125;
-            &lt;/style&gt;
-        ```
-
-        ```Plain Text
-        &lt;body&gt;
-            &lt;div&gt;&lt;/div&gt;
-        
-            &lt;script&gt;
-                let div = document.querySelector(&#39;div&#39;);
-                div.onclick = function () &#123;
-                    this.style.backgroundColor = &#39;red&#39;;
-                &#125;
-            &lt;/script&gt;
-        &lt;/body&gt;
+<pre><code class="html">    &lt;style&gt;
+            div &#123;
+                width: 200px;
+                height: 200px;
+                background-color: pink;
+            &#125;
+    &lt;/style&gt;
+                
+    &lt;body&gt;
+        &lt;div&gt;&lt;/div&gt;
+            
+        &lt;script&gt;
+            let div = document.querySelector(&#39;div&#39;);
+            div.onclick = function () &#123;
+                this.style.backgroundColor = &#39;red&#39;;
+            &#125;
+        &lt;/script&gt;
+    &lt;/body&gt;
 </code></pre>
 <p><code>element. className</code> 类名样式操作</p>
 <p>因为class是保留字所以用className</p>
