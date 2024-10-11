@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>桃沢礼</title>
+  
+  <subtitle>生活明朗,万物可爱</subtitle>
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2024-10-11T07:32:06.000Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>桃沢礼</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript之操作元素</title>
+    <link href="http://example.com/2024/10/11/JavaScript%E4%B9%8B%E6%93%8D%E4%BD%9C%E5%85%83%E7%B4%A0/"/>
+    <id>http://example.com/2024/10/11/JavaScript%E4%B9%8B%E6%93%8D%E4%BD%9C%E5%85%83%E7%B4%A0/</id>
+    <published>2024-10-11T07:06:24.000Z</published>
+    <updated>2024-10-11T07:32:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="操作元素"><a href="#操作元素" class="headerlink" title="操作元素"></a>操作元素</h1><p>JavaScript的DOM操作可以改变网页内容、结构和样式，我们可以利用DOM操作来改变元素里面的内容、属性等。注意以下都是属性<br>所有<code>&lt;script&gt;&lt;/script&gt;</code>放在<code>&lt;body&gt;&lt;/body&gt;</code>中的最后，避免 JavaScript 操作 DOM 失效</p><h2 id="1-改变元素内容"><a href="#1-改变元素内容" class="headerlink" title="1.改变元素内容"></a>1.改变元素内容</h2><p><code>element.innerText</code></p><p>从其实位置到种植位置的内容，但它去除html标签，同时空格和换行也会去掉</p><p><code>element.innerHTML</code></p><p>起始位置到终止位置的全部内容，包括html标签，同时保留空格和换行</p><pre><code> &lt;body&gt;    &lt;button&gt;显示当前系统时间&lt;/button&gt;    &lt;div&gt;某个时间&lt;/div&gt;    &lt;p&gt;1123&lt;/p&gt;    &lt;a&gt;&lt;/a&gt;    &lt;script&gt;        // 当我们点击了按钮，  div里面的文字会发生变化        // 1. 获取元素         let btn = document.querySelector(&#39;button&#39;);        let div = document.querySelector(&#39;div&#39;);        // 2.注册事件        btn.onclick = function() &#123;            // div.innerText = &#39;2024-10-11&#39;;            div.innerHTML = getDate();        &#125;        function getDate() &#123;            let date = new Date();            // 我们写一个 2024年 10月 11日 星期三            let year = date.getFullYear();            let month = date.getMonth() + 1;            let dates = date.getDate();            let arr = [&#39;星期日&#39;, &#39;星期一&#39;, &#39;星期二&#39;, &#39;星期三&#39;, &#39;星期四&#39;, &#39;星期五&#39;, &#39;星期六&#39;];            let day = date.getDay();            return &#39;今天是：&#39; + year + &#39;年&#39; + month + &#39;月&#39; + dates + &#39;日 &#39; + arr[day];        &#125;        // 我们元素可以不用添加事件        let p = document.querySelector(&#39;p&#39;);        p.innerText = getDate();//页面加载就直接显示        let a = document.querySelector(&#39;a&#39;);        a.innerText = &#39;&lt;strong&gt;aaa&lt;/strong&gt;bbb&#39;;//&lt;strong&gt;aaa&lt;/strong&gt;bbb        a.innerHTML = &#39;&lt;strong&gt;aaa&lt;/strong&gt;bbb&#39;;//aaabbb(aaa加粗)    &lt;/script&gt;&lt;/body&gt;</code></pre><p><code>innerText</code>和<code>innerHTML</code>是可读写的 可以获得里面的元素</p><pre><code>&lt;body&gt;    &lt;div&gt;&lt;/div&gt;    &lt;p&gt;        我是文字        &lt;span&gt;123&lt;/span&gt;    &lt;/p&gt;    &lt;script&gt;        let p = document.querySelector(&#39;p&#39;);        console.log(p.innerText);//我是文字 123        console.log(p.innerHTML);//我是文字                   &lt;span&gt;123&lt;/span&gt;    &lt;/script&gt;&lt;/body&gt;</code></pre><h2 id="2-常用元素的属性操作"><a href="#2-常用元素的属性操作" class="headerlink" title="2.常用元素的属性操作"></a>2.常用元素的属性操作</h2><p><code>src、href、id、alt、title</code></p><pre><code>&lt;body&gt;    &lt;button id=&quot;ldh&quot;&gt;刘德华&lt;/button&gt;    &lt;button id=&quot;zxy&quot;&gt;张学友&lt;/button&gt;    &lt;img src=&quot;images/ldh.jpg&quot; alt=&quot;刘德华&quot; title=&quot;刘德华&quot;&gt;    &lt;script&gt;        // 修改元素属性 src        // 1.获取元素        let ldh = document.querySelector(&#39;#ldh&#39;);        let zxy = document.querySelector(&#39;#zxy&#39;);        let img = document.querySelector(&#39;img&#39;);        // 2.注册事件        zxy.onclick = function () &#123;            img.src = &#39;images/zxy.jpg&#39;;            img.title = &#39;张学友&#39;;        &#125;        ldh.onclick = function () &#123;            img.src = &#39;images/ldh.jpg&#39;;            img.title = &#39;刘德华&#39;;        &#125;    &lt;/script&gt;&lt;/body&gt;</code></pre><h2 id="3-表单元素的属性操作"><a href="#3-表单元素的属性操作" class="headerlink" title="3.表单元素的属性操作"></a>3.表单元素的属性操作</h2><p>利用DOM可以操作如下表单元素的属性</p><p><code>type,value,checked,selected,disabled</code></p><pre><code>&lt;body&gt;    &lt;button&gt;按钮&lt;/button&gt;    &lt;input type=&quot;text&quot; value=&quot;输入内容&quot;&gt;    &lt;script&gt;        let btn = document.querySelector(&#39;button&#39;);        let input = document.querySelector(&#39;input&#39;);        btn.onclick = function () &#123;            input.value = &#39;点击了按钮&#39;;            this.disabled = true;        &#125;    &lt;/script&gt;&lt;/body&gt;</code></pre><h2 id="4-样式属性操作"><a href="#4-样式属性操作" class="headerlink" title="4.样式属性操作"></a>4.样式属性操作</h2><h3 id="4-1修改样式属性"><a href="#4-1修改样式属性" class="headerlink" title="4.1修改样式属性"></a>4.1修改样式属性</h3><p><code>element. style</code> 行内样式操作</p><pre><code>        &lt;style&gt;                div &#123;                    width: 200px;                    height: 200px;                    background-color: pink;                &#125;            &lt;/style&gt;        ```        ```Plain Text        &lt;body&gt;            &lt;div&gt;&lt;/div&gt;                    &lt;script&gt;                let div = document.querySelector(&#39;div&#39;);                div.onclick = function () &#123;                    this.style.backgroundColor = &#39;red&#39;;                &#125;            &lt;/script&gt;        &lt;/body&gt;</code></pre><p><code>element. className</code> 类名样式操作</p><p>因为class是保留字所以用className</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;操作元素&quot;&gt;&lt;a href=&quot;#操作元素&quot; class=&quot;headerlink&quot; title=&quot;操作元素&quot;&gt;&lt;/a&gt;操作元素&lt;/h1&gt;&lt;p&gt;JavaScript的DOM操作可以改变网页内容、结构和样式，我们可以利用DOM操作来改变元素里面的内容、属性等。注意以下都</summary>
+      
+    
+    
+    
+    
+    <category term="JavaScript" scheme="http://example.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的第一篇文章</title>
+    <link href="http://example.com/2024/10/11/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/"/>
+    <id>http://example.com/2024/10/11/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</id>
+    <published>2024-10-11T05:21:09.000Z</published>
+    <updated>2024-10-11T05:27:12.590Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="这是我的第一篇文章1"><a href="#这是我的第一篇文章1" class="headerlink" title="这是我的第一篇文章1"></a>这是我的第一篇文章1</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;这是我的第一篇文章1&quot;&gt;&lt;a href=&quot;#这是我的第一篇文章1&quot; class=&quot;headerlink&quot; title=&quot;这是我的第一篇文章1&quot;&gt;&lt;/a&gt;这是我的第一篇文章1&lt;/h3&gt;</summary>
+      
+    
+    
+    
+    
+    <category term="test" scheme="http://example.com/tags/test/"/>
+    
+  </entry>
+  
+</feed>
